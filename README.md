@@ -18,7 +18,7 @@ Este projeto nasceu da minha paixão por torneios de jogos de luta como o [Red B
   - Operações CRUD completas para participantes
   - Persistência em banco de dados H2 (embutido)
 
-- **Sistema de Chaveamento Inteligente**
+- **Sistema de Chaveamento**
   - Geração de brackets usando árvores binárias
   - Implementação de estratégias de distribuição:
     - Atribuição aleatória
