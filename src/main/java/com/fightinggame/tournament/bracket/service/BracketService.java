@@ -42,11 +42,21 @@ public class BracketService {
      */
     public void initializeBracket(BracketInitializationRequest initializationRequest) {
 
-        AssignmentType assignmentType = initializationRequest.assignerType();
-        List <PlayerResponse> playerResponses = playerService.getAllPlayers();
+        if (initializationRequest == null) {
+            throw new IllegalArgumentException("BracketInitializationRequest cannot be null");
+        }
 
-        if (playerResponses == null || playerResponses.isEmpty()) {
-            throw new IllegalArgumentException("Players list cannot be null or empty");
+        AssignmentType assignmentType = initializationRequest.assignerType();
+        if (assignmentType == null) {
+            throw new IllegalArgumentException("AssignmentType cannot be null");
+        }
+
+        List<PlayerResponse> playerResponses = playerService.getAllPlayers();
+        if (playerResponses == null) {
+            throw new IllegalStateException("PlayerService returned null player list");
+        }
+        if (playerResponses.isEmpty()) {
+            throw new IllegalArgumentException("At least 3 players required");
         }
         if (playerResponses.size() <= 2) {
             throw new IllegalArgumentException("At least 3 players required");
